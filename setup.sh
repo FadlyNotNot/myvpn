@@ -39,13 +39,13 @@ mkdir -p /etc/xray
 
 clear
 echo -e "[ ${tyblue}NOTES${NC} ] AUTO INSTALL SCRIPT.... "
-sleep 1
+sleep 0.5
 echo -e "[ ${tyblue}NOTES${NC} ] Multi path, Multi port, support debian 10 , Ubuntu 20-18"
+sleep 0.5
+echo -e "[ ${green}INFO${NC} ] By Fv store Tunneling "
+sleep 0.5
+echo -e "[ ${green}INFO${NC} ] t.me/fv_stores"
 sleep 2
-echo -e "[ ${green}INFO${NC} ] By LawNET"
-sleep 1
-echo -e "[ ${green}INFO${NC} ] t.me/law_sky"
-sleep 5
 
 secs_to_human() {
     echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
@@ -74,9 +74,7 @@ chmod 644 /root/.profile
 echo -e "[ ${green}INFO${NC} ] Preparing the install file 🛠"
 apt install git curl -y >/dev/null 2>&1
 echo -e "[ ${green}INFO${NC} ] Alright good ... installation file is ready 📡"
-sleep 2
-echo -ne "[ ${green}INFO${NC} ] Check permission : success 😁"
-sleep 3
+sleep 1
 mkdir -p /etc/yudhynetwork
 mkdir -p /etc/yudhynetwork/theme
 mkdir -p /var/lib/yudhynetwork-pro >/dev/null 2>&1
@@ -145,7 +143,7 @@ EOF
 cat <<EOF>> /etc/yudhynetwork/theme/color.conf
 blue
 EOF
-############# LawNET #############
+############# INSTALL RESOURCE #############
 
 #install ssh ovpn
 echo -e "${tyblue}.------------------------------------------.${NC}"
@@ -209,7 +207,7 @@ vnstat -m
 END
 chmod 644 /root/.profile
 
-############# LawNET #############
+############# FV STORES #############
 
 if [ -f "/root/log-install.txt" ]; then
 rm /root/log-install.txt > /dev/null 2>&1
@@ -233,7 +231,7 @@ gg="AM"
 fi
 curl -sS ifconfig.me > /etc/myipvps
 
-############# LawNET #############
+############# FV STORES #############
 
 echo " "
 echo "Installation has been completed!!"
