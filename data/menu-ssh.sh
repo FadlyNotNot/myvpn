@@ -468,6 +468,11 @@ menu-ssh
 
 function trialssh(){
 clear
+echo -e "\033[1;93m◇━━━━━━━━━━━━━━━━━◇\033[0m"
+echo -e " Set Expired ( Menit )         "
+echo -e "\033[1;93m◇━━━━━━━━━━━━━━━━━◇\033[0m"
+read -p " Menit : " pup
+clear
 domen=`cat /etc/xray/domain`
 portsshws=`cat ~/log-install.txt | grep -w "SSH Websocket" | cut -d: -f2 | awk '{print $1}'`
 wsssl=`cat /root/log-install.txt | grep -w "SSH SSL Websocket" | cut -d: -f2 | awk '{print $1}'`
@@ -480,7 +485,7 @@ ssl="$(cat ~/log-install.txt | grep -w "Stunnel4" | cut -d: -f2)"
 OhpSSH=`cat /root/log-install.txt | grep -w "OHP SSH" | cut -d: -f2 | awk '{print $1}'`
 
 
-Login=zenhost-`</dev/urandom tr -dc X-Z0-9 | head -c4`
+Login=fvpn-`</dev/urandom tr -dc X-Z0-9 | head -c4`
 hari="1"
 Pass=1
 echo Ping Host &> /dev/null
@@ -494,6 +499,7 @@ exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
 echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
 
+echo userdel -f "$Login" | at now +$pup minutes &> /dev/null
 if [[ ! -z "${PID}" ]]; then
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC} ${COLBG1}            ${WH}• SSH TRIAL ACCOUNT •              ${NC} $COLOR1 $NC"
@@ -501,7 +507,7 @@ echo -e "$COLOR1└────────────────────�
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 $NC  ${WH}Username   ${COLOR1}: ${WH}$Login" 
 echo -e "$COLOR1 $NC  ${WH}Password   ${COLOR1}: ${WH}$Pass"
-echo -e "$COLOR1 $NC  ${WH}Expired On ${COLOR1}: ${WH}$exp" 
+echo -e "$COLOR1 $NC  ${WH}Expired On ${COLOR1}: ${WH}$pup Menit" 
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 $NC  ${WH}IP         ${COLOR1}: ${WH}$IP" 
@@ -528,7 +534,7 @@ echo -e "$COLOR1└────────────────────�
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 $NC  ${WH}Username   ${COLOR1}: ${WH}$Login" 
 echo -e "$COLOR1 $NC  ${WH}Password   ${COLOR1}: ${WH}$Pass"
-echo -e "$COLOR1 $NC  ${WH}Expired On ${COLOR1}: ${WH}$exp" 
+echo -e "$COLOR1 $NC  ${WH}Expired On ${COLOR1}: ${WH}$pup Menit" 
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 $NC  ${WH}IP         ${COLOR1}: ${WH}$IP" 
